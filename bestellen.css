@@ -1,0 +1,314 @@
+/* ===== BASIS (STICKY FOOTER) ===== */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, Arial, sans-serif;
+    background: #faf7fc;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, 0) 70%,
+            #ffffff 100%),
+        linear-gradient(90deg,
+            #f6b6da 0%,
+            #f4c1e6 25%,
+            #e8c8f2 50%,
+            #d9c4fa 75%,
+            #cdbbff 100%);
+}
+
+
+.logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    max-height: 200px;
+    width: auto;
+    display: block;
+}
+
+
+/* ===== HAMBURGER ===== */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #ff00c8;
+    cursor: pointer;
+    margin: 12px auto;
+}
+
+/* ===== MENU (DESKTOP) ===== */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    padding: 18px 0;
+    background: #faf7fc;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #ff00c8;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.main-menu a:hover {
+    text-decoration: underline;
+}
+
+/* actieve pagina in menu */
+.main-menu a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    font-weight: 600;
+}
+
+/* ===== PAGINA ===== */
+.page {
+    flex: 1;
+}
+
+.page.voorwaarden {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+
+.voorwaarden-sub {
+    font-size: 22px;
+    /* maak groter of kleiner naar smaak */
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 40px 0 16px;
+    color: #000;
+}
+
+
+/* ===== LINKS ===== */
+.social-link,
+.mail-link {
+    font-weight: 700;
+    color: #ff1bb3;
+    cursor: pointer;
+}
+
+a.mail-link,
+a.mail-link:hover,
+a.mail-link:visited,
+a.mail-link:active,
+a.mail-link:focus {
+    text-decoration: none !important;
+    color: #ff1bb3;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 50px;
+    background:
+        linear-gradient(to top,
+            rgba(255, 255, 255, 0) 65%,
+            #ffffff 100%),
+        linear-gradient(90deg,
+            #f6b6da 0%,
+            #f4c1e6 25%,
+            #e8c8f2 50%,
+            #d9c4fa 75%,
+            #cdbbff 100%);
+}
+
+.site-footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+}
+
+.footer-icons img {
+    width: 42px;
+    height: 42px;
+}
+
+/* footer tekst bewust uit */
+.footer-info {
+    display: none;
+}
+
+.site-footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== SCROLL TO TOP ===== */
+#scrollTop {
+    position: fixed;
+    right: 20px;
+    bottom: 25px;
+    width: 44px;
+    height: 44px;
+    background: #ff4fb8;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+}
+
+/* ===== MODAL ===== */
+.social-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.social-modal.show {
+    display: flex;
+}
+
+.social-box {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 360px;
+    width: 90%;
+}
+
+.social-box h3 {
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 25px;
+}
+
+.social-icons img {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+#closeSocials {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #ff1bb3;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ===== MOBIEL DROPDOWN ===== */
+
+.mobile-dropdown {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .site-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+        padding-top: 50px;
+    }
+
+    /* ✅ ALLEEN het logo lager zetten */
+
+    @media (max-width: 700px) {
+        .logo-link {
+            padding-top: 20px;
+        }
+
+        .logo {
+            width: 70vw;
+            max-width: 260px;
+            height: auto;
+            margin: 0;
+            pointer-events: none;
+        }
+    }
+
+    .mobile-dropdown {
+        display: block;
+        width: 95%;
+        margin: 14px auto 20px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .mobile-dropdown select {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        background: #f2f2f2;
+        text-align: center;
+        text-align-last: center;
+        /* iOS */
+    }
+
+    .mobile-dropdown option {
+        text-align: center;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    main.page {
+        margin-top: 24px;
+        padding-top: 12px;
+    }
+}
+
+@media (max-width: 700px) {
+    .voorwaarden-title {
+        font-size: 26px;
+        margin-top: 18px;
+    }
+}
