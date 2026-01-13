@@ -1,0 +1,187 @@
+/* ===== BASIS ===== */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: system-ui, Arial, sans-serif;
+    background: #faf7fc;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+
+
+.site-header {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, 0) 70%,
+            #ffffff 100%),
+        linear-gradient(90deg,
+            #f6b6da 0%,
+            #f4c1e6 25%,
+            #e8c8f2 50%,
+            #d9c4fa 75%,
+            #cdbbff 100%);
+}
+
+
+.logo-link {
+    display: inline-block;
+}
+
+.logo {
+    max-height: 200px;
+    /* schaalbaar, mobiel-vriendelijk */
+    width: auto;
+    display: block;
+}
+
+/* ===== MENU ===== */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    padding: 18px 0;
+    background: #faf7fc;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #ff00c8;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.main-menu a:hover {
+    text-decoration: underline;
+}
+
+/* actieve pagina in menu */
+.main-menu a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    font-weight: 600;
+}
+
+/* ===== PAGINA ===== */
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page h1,
+.page h2 {
+    text-align: center;
+}
+
+/* ===== ABOUT ===== */
+.about-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.profile-pic {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    /* vierkant met zachte hoeken */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.about-text {
+    line-height: 1.6;
+    font-size: 18px;
+    flex: 1;
+    max-width: 900px;
+    /* voorkomt dat de regels te lang worden */
+    margin: 0 auto;
+    /* centreert het blok zelf */
+    text-align: center;
+    /* centreert de tekst */
+
+}
+
+/* ===== MOBIEL ===== */
+@media (max-width: 768px) {
+    .about-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* ===== MOBIEL DROPDOWN ===== */
+
+.mobile-dropdown {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .site-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+        padding-top: 50px;
+    }
+
+
+    /* ✅ ALLEEN het logo lager zetten */
+    .logo-link {
+        padding-top: 20px;
+    }
+
+    .logo {
+        max-width: 180px;
+        height: auto;
+        margin: 0;
+        /* belangrijk */
+    }
+
+    .mobile-dropdown {
+        display: block;
+        width: 95%;
+        margin: 14px auto 20px;
+    }
+
+    .mobile-dropdown select {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        background: #f2f2f2;
+        text-align: center;
+        text-align-last: center;
+        /* iOS */
+    }
+
+    .mobile-dropdown option {
+        text-align: center;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    main.page {
+        margin-top: 24px;
+        padding-top: 12px;
+    }
+}
