@@ -14,13 +14,13 @@
 
     <!-- HEADER -->
     <header class="site-header">
-        <a href="index.html" class="logo-link">
+        <a href="../index.html" class="logo-link">
             <img src="../Afbeeldingen/robban-logo.png" alt="Robban logo" class="logo">
         </a>
 
         <div class="mobile-dropdown">
             <select id="pageSelect">
-                <option value="index.html">Home</option>
+                <option value="../index.html">Home</option>
                 <option value="bestellen.html">Bestellen</option>
                 <option value="lastminute.html" selected>Last-minute</option>
                 <option value="wie.html">Over mij</option>
@@ -28,8 +28,9 @@
         </div>
     </header>
 
+    <!-- MENU -->
     <nav class="main-menu">
-        <a href="index.html">Home</a>
+        <a href="../index.html">Home</a>
         <a href="bestellen.html">Bestellen</a>
         <a href="lastminute.html" class="active">Last-minute</a>
         <a href="wie.html">Over mij</a>
@@ -47,7 +48,7 @@
         </p>
     </main>
 
-    <!-- SOCIAL MEDIA MODAL -->
+    <!-- SOCIAL MODAL -->
     <div class="social-modal" id="socialModal">
         <div class="social-box">
             <h3>Kies een kanaal</h3>
@@ -69,50 +70,16 @@
     <footer class="site-footer">
         <div class="site-footer-inner">
             <div class="footer-icons">
-                <a href="https://www.instagram.com/robban.gifts" target="_blank">
-                    <img src="../Afbeeldingen/Insta.png" alt="Instagram">
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61583639590575" target="_blank">
-                    <img src="../Afbeeldingen/Fb.png" alt="Facebook">
-                </a>
-                <a href="mailto:robban@outlook.be">
-                    <img src="../Afbeeldingen/Mail-logo.png" alt="Mail">
-                </a>
+                <img src="../Afbeeldingen/Insta.png" alt="Instagram">
+                <img src="../Afbeeldingen/Fb.png" alt="Facebook">
+                <img src="../Afbeeldingen/Mail-logo.png" alt="Mail">
             </div>
         </div>
     </footer>
 
-    <!-- SCROLL TOP -->
-    <button id="scrollTop">↑</button>
-
-    <!-- SCRIPTS -->
-    <script>
-        // Dropdown navigatie
-        document.getElementById("pageSelect").addEventListener("change", function () {
-            window.location.href = this.value;
-        });
-
-        // Social modal
-        const openSocials = document.getElementById("openSocials");
-        const socialModal = document.getElementById("socialModal");
-        const closeSocials = document.getElementById("closeSocials");
-
-        openSocials.addEventListener("click", () => {
-            socialModal.classList.add("show");
-        });
-
-        closeSocials.addEventListener("click", () => {
-            socialModal.classList.remove("show");
-        });
-
-        socialModal.addEventListener("click", (e) => {
-            if (e.target === socialModal) {
-                socialModal.classList.remove("show");
-            }
-        });
-    </script>
-
+    <!-- JS -->
     <script src="../app.js"></script>
+
 </body>
 
 </html>

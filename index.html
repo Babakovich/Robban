@@ -1,12 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=html/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robban</title>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body></body>
+<body>
+
+    <!-- HEADER IMAGE -->
+    <img src="Afbeeldingen/robban-header.png" alt="Robban" class="header">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="mobile-dropdown">
+            <select id="pageSelect">
+                <option value="index.html">Home</option>
+                <option value="html/bestellen.html">Bestellen</option>
+                <option value="html/lastminute.html">Last-minute</option>
+                <option value="html/wie.html">Over mij</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="close">&times;</span>
+        <span class="nav prev" id="prev">&#10094;</span>
+        <img id="lightboxImg" alt="">
+        <video id="lightboxVideo" controls playsinline></video>
+        <span class="nav next" id="next">&#10095;</span>
+    </div>
+
+    <!-- MENU -->
+    <nav class="main-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="html/bestellen.html">Bestellen</a>
+        <a href="html/lastminute.html">Last-minute</a>
+        <a href="html/wie.html">Over mij</a>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="page">
+
+        <h1>Welkom bij Robban!</h1>
+        <h2>Unieke en gepersonaliseerde geschenkdozen voor elk speciaal moment.</h2>
+
+        <p>
+            Op de website ziet u enkele voorbeelden van eerder gemaakte geschenkmanden ter inspiratie.<br>
+            Voor bestellingen, eigen ideeën of personalisatie kunt u contact opnemen — wij denken graag met u mee!<br>
+            Dit kan via <span class="social-link" id="openSocials">sociale media</span> of via
+            <a href="mailto:robban@outlook.be">e-mail</a>.
+        </p>
+
+        <div class="catalog">
+            <div class="catalog-left">
+
+                <!-- SETS -->
+                <div class="catalog-item">
+                    <div class="gift-item">
+                        <img src="Afbeeldingen/Bloemen/Ferrerobloemix/Strikbloem.png">
+                        <img src="Afbeeldingen/Bloemen/Ferrerobloemix/Strikbloem1.png">
+                    </div>
+                </div>
+
+                <div class="catalog-item">
+                    <div class="gift-item">
+                        <img src="Afbeeldingen/Bloemen/Chocoladeboeket/Chocolade1.png">
+                        <img src="Afbeeldingen/Bloemen/Chocoladeboeket/Chocolade2.png">
+                    </div>
+                </div>
+
+                <div class="catalog-item">
+                    <div class="gift-item">
+                        <img src="Afbeeldingen/Bloemen/Redmixbox/Redmixbox.png">
+                        <img src="Afbeeldingen/Bloemen/Redmixbox/Redmixbox1.png">
+                        <img src="Afbeeldingen/Bloemen/Redmixbox/Redmixbox2.png">
+                    </div>
+                </div>
+
+                <!-- SINGLE ITEMS -->
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/Bloemengeld.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/Christmas.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/Fles.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/Lolly.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/Mixbox.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/Oranjetulpen.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Bloemen/RZbloemgeld.png"></div>
+                </div>
+                <div class="catalog-item">
+                    <div class="gift-item single"><img src="Afbeeldingen/Redbull.png"></div>
+                </div>
+
+                <!-- VIDEO -->
+                <div class="catalog-item">
+                    <div class="gift-item video-item">
+                        <video class="catalog-video" controls playsinline preload="metadata">
+                            <source src="Afbeeldingen/robban-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div class="footer-info">
+                <strong>Robban</strong><br>
+                BE1030.767.827<br>
+                robban@outlook.be<br>
+                Georges Mommerencystraat 22, 8620 Nieuwpoort
+            </div>
+
+            <div class="footer-icons">
+                <img src="Afbeeldingen/Insta.png" alt="Instagram">
+                <img src="Afbeeldingen/Fb.png" alt="Facebook">
+                <img src="Afbeeldingen/Mail-logo.png" alt="Mail">
+            </div>
+        </div>
+
+
+        <div class="footer-privacy">
+            <a href="html/privacy.html">Privacybeleid</a>
+    </footer>
+
+    <!-- JS -->
+
+
+    <script src="app.js" defer></script>
+    <button id="scrollTop">↑</button>
+
+</body>
 
 </html>

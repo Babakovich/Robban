@@ -250,26 +250,3 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = this.value;
     });
 });
-µ
-
-document.addEventListener("DOMContentLoaded", () => {
-    const openSocials = document.getElementById("openSocials");
-    const socialModal = document.getElementById("socialModal");
-    const closeSocials = document.getElementById("closeSocials");
-
-    if (openSocials && socialModal && closeSocials) {
-        openSocials.addEventListener("click", () => {
-            socialModal.classList.add("show");
-        });
-
-        closeSocials.addEventListener("click", () => {
-            socialModal.classList.remove("show");
-        });
-
-        socialModal.addEventListener("click", (e) => {
-            if (e.target === socialModal) {
-                socialModal.classList.remove("show");
-            }
-        });
-    }
-});

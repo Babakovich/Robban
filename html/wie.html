@@ -7,7 +7,7 @@
     <title>Over mij – Robban</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/wie.css">
+    <link rel="stylesheet" href="../css/wie.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
@@ -15,22 +15,24 @@
 
     <!-- HEADER -->
     <header class="site-header">
-        <a href="index.html" class="logo-link">
+        <!-- 🔥 Logo gaat nu correct naar de homepage -->
+        <a href="../index.html" class="logo-link">
             <img src="../Afbeeldingen/robban-logo.png" alt="Robban logo" class="logo">
         </a>
+
         <div class="mobile-dropdown">
             <select id="pageSelect">
-                <option value="index.html">Home</option>
+                <option value="../index.html">Home</option>
                 <option value="bestellen.html">Bestellen</option>
                 <option value="lastminute.html">Last-minute</option>
-                <option value="wie.html">Over mij</option>
+                <option value="wie.html" selected>Over mij</option>
             </select>
         </div>
-
     </header>
 
+    <!-- MENU -->
     <nav class="main-menu">
-        <a href="index.html">Home</a>
+        <a href="../index.html">Home</a>
         <a href="bestellen.html">Bestellen</a>
         <a href="lastminute.html">Last-minute</a>
         <a href="wie.html" class="active">Over mij</a>
@@ -54,9 +56,11 @@
 
             Bent u op zoek naar een origineel en persoonlijk cadeau? Dan denk ik graag met u mee!
         </p>
-        </div>
     </main>
+
+    <!-- JS -->
     <script src="../app.js"></script>
+
 </body>
 
 </html>
