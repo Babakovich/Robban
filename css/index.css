@@ -438,10 +438,12 @@ body.no-scroll {
 
 /* Klikbare "sociale media" link */
 .social-link {
+    font-weight: 700;
     color: #ff1bb3;
-    font-weight: 500;
     cursor: pointer;
 }
+
+
 
 .page h3 .social-link,
 .page h3 a {
@@ -451,6 +453,22 @@ body.no-scroll {
     /* jouw roze */
 }
 
+.page p,
+.page a {
+    position: relative;
+    z-index: 50;
+}
+
+.catalog-left {
+    position: relative;
+    z-index: 1;
+}
+
+.social-link,
+.page a[href^="mailto"] {
+    font-weight: 700 !important;
+    color: #ff1bb3;
+}
 
 
 
