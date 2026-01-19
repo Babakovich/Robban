@@ -470,6 +470,90 @@ body.no-scroll {
     color: #ff1bb3;
 }
 
+/* 💗 VALENTIJN HARTJE */
+#valentine-heart {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 42px;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+/* vallende hartjes */
+.falling-heart {
+    position: fixed;
+    top: -20px;
+    font-size: 18px;
+    color: pink;
+    animation: fall 3s linear forwards;
+    z-index: 2000;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+/* popup */
+#valentine-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4000;
+}
+
+.valentine-box {
+    background: white;
+    padding: 32px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.valentine-box h2 {
+    color: red;
+    margin-bottom: 18px;
+}
+
+#valentine-view {
+    background: #ff4fb8;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* valentijn pagina */
+#valentine-gifts {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#valentine-gifts p {
+    color: #ff4fb8;
+    font-size: 18px;
+}
+
+/* grid blijft al klaar */
+.valentine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 22px;
+    max-width: 900px;
+    margin: 30px auto 0;
+}
+
+/* verbergen */
+.valentine-hidden {
+    display: none;
+}
 
 
 /* ===== MOBIEL ===== */

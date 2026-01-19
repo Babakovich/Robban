@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===============================
-       HOVER IMAGE ROTATION (DESKTOP)
+       HOVER IMAGE ROTATION
     =============================== */
     document.querySelectorAll(".gift-item").forEach(item => {
         const images = item.querySelectorAll("img");
         if (images.length <= 1) return;
 
         let index = 0;
-        let timer = null;
+        let timer;
 
         item.addEventListener("mouseenter", () => {
             timer = setInterval(() => {
@@ -33,28 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         item.addEventListener("mouseleave", () => {
             clearInterval(timer);
-            timer = null;
             images.forEach((img, i) => img.style.opacity = i === 0 ? 1 : 0);
             index = 0;
         });
     });
-
-    /* ===============================
-       VIDEO MANAGEMENT
-    =============================== */
-    const allVideos = document.querySelectorAll("video");
-
-    function stopAllVideos() {
-        allVideos.forEach(video => video.pause());
-    }
-
-    const videoObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) entry.target.pause();
-        });
-    }, { threshold: 0.25 });
-
-    allVideos.forEach(video => videoObserver.observe(video));
 
     /* ===============================
        LIGHTBOX
@@ -69,21 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentIndex = 0;
 
-    media.forEach((item, index) => {
-        item.addEventListener("click", () => {
-            stopAllVideos();
-            currentIndex = index;
-            openLightbox();
-        });
-    });
+    function stopAllVideos() {
+        document.querySelectorAll("video").forEach(v => v.pause());
+    }
 
     function openLightbox() {
         const item = media[currentIndex];
-
         lightboxImg.style.display = "none";
         lightboxVideo.style.display = "none";
         lightboxVideo.pause();
-        lightboxVideo.currentTime = 0;
 
         if (item.tagName === "IMG") {
             lightboxImg.src = item.src;
@@ -103,6 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("no-scroll");
     }
 
+    media.forEach((item, i) => {
+        item.addEventListener("click", () => {
+            currentIndex = i;
+            openLightbox();
+        });
+    });
+
     prevBtn?.addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + media.length) % media.length;
         openLightbox();
@@ -115,41 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeBtn?.addEventListener("click", closeLightbox);
 
-    document.addEventListener("keydown", e => {
-        if (e.key === "Escape") closeLightbox();
-        if (e.key === "ArrowLeft") prevBtn?.click();
-        if (e.key === "ArrowRight") nextBtn?.click();
-    });
-
-    /* ===============================
-       MOBILE SWIPE
-    =============================== */
-    if (window.matchMedia("(max-width: 700px)").matches && lightbox) {
-        let startX = 0;
-        let startY = 0;
-
-        lightbox.addEventListener("touchstart", e => {
-            const t = e.touches[0];
-            startX = t.clientX;
-            startY = t.clientY;
-        });
-
-        lightbox.addEventListener("touchend", e => {
-            const t = e.changedTouches[0];
-            const dx = t.clientX - startX;
-            const dy = t.clientY - startY;
-
-            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-                currentIndex = dx < 0
-                    ? (currentIndex + 1) % media.length
-                    : (currentIndex - 1 + media.length) % media.length;
-                openLightbox();
-            }
-
-            if (dy > 80) closeLightbox();
-        });
-    }
-
     /* ===============================
        SOCIAL MODAL
     =============================== */
@@ -158,14 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeSocials = document.getElementById("closeSocials");
 
     if (openSocials && socialModal && closeSocials) {
-        openSocials.addEventListener("click", () => {
-            socialModal.classList.add("show");
-        });
-
-        closeSocials.addEventListener("click", () => {
-            socialModal.classList.remove("show");
-        });
-
+        openSocials.addEventListener("click", () => socialModal.classList.add("show"));
+        closeSocials.addEventListener("click", () => socialModal.classList.remove("show"));
         socialModal.addEventListener("click", e => {
             if (e.target === socialModal) socialModal.classList.remove("show");
         });
@@ -176,11 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
     =============================== */
     const select = document.getElementById("pageSelect");
     if (select) {
-        const currentPage = location.pathname.split("/").pop();
-        if (currentPage) select.value = currentPage;
-
-        select.addEventListener("change", function () {
-            window.location.href = this.value;
+        select.addEventListener("change", () => {
+            window.location.href = select.value;
         });
     }
 
