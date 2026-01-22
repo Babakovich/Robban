@@ -14,29 +14,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===============================
-       HOVER IMAGE ROTATION (DESKTOP)
+       HOVER IMAGE ROTATION (ALLEEN DESKTOP)
     =============================== */
-    document.querySelectorAll(".gift-item").forEach(item => {
-        const images = item.querySelectorAll("img");
-        if (images.length <= 1) return;
+    const canHover = window.matchMedia("(hover: hover)").matches;
 
-        let index = 0;
-        let timer;
+    if (canHover) {
+        document.querySelectorAll(".gift-item").forEach(item => {
+            const images = item.querySelectorAll("img");
+            if (images.length <= 1) return;
 
-        item.addEventListener("mouseenter", () => {
-            timer = setInterval(() => {
-                images[index].style.opacity = 0;
-                index = (index + 1) % images.length;
-                images[index].style.opacity = 1;
-            }, 1000);
+            let index = 0;
+            let timer = null;
+
+            item.addEventListener("mouseenter", () => {
+                timer = setInterval(() => {
+                    images[index].style.opacity = 0;
+                    index = (index + 1) % images.length;
+                    images[index].style.opacity = 1;
+                }, 1000);
+            });
+
+            item.addEventListener("mouseleave", () => {
+                clearInterval(timer);
+                timer = null;
+                images.forEach((img, i) => img.style.opacity = i === 0 ? 1 : 0);
+                index = 0;
+            });
         });
-
-        item.addEventListener("mouseleave", () => {
-            clearInterval(timer);
-            images.forEach((img, i) => img.style.opacity = i === 0 ? 1 : 0);
-            index = 0;
-        });
-    });
+    }
 
     /* ===============================
        LIGHTBOX + SWIPE + SCROLL LOCK
@@ -51,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentIndex = 0;
     let touchStartX = 0;
-    let touchEndX = 0;
 
     function preventScroll(e) {
         e.preventDefault();
@@ -94,11 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeLightbox() {
         stopAllVideos();
-
-        // video volledig resetten (belangrijk op mobiel)
         lightboxVideo.removeAttribute("src");
         lightboxVideo.load();
-
         lightbox.style.display = "none";
         enableBackgroundScroll();
     }
@@ -122,13 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeBtn?.addEventListener("click", closeLightbox);
 
-    // klik buiten afbeelding/video = sluiten
     lightbox.addEventListener("click", e => {
         if (e.target === lightbox) closeLightbox();
     });
 
     /* ===============================
-       SWIPE (ALLEEN AFBEELDINGEN)
+       SWIPE (AFBEELDINGEN)
     =============================== */
     if (lightboxImg) {
         lightboxImg.addEventListener("touchstart", e => {
@@ -136,9 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         lightboxImg.addEventListener("touchend", e => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-
+            const diff = touchStartX - e.changedTouches[0].screenX;
             if (Math.abs(diff) < 50) return;
 
             currentIndex = diff > 0
