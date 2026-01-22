@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ===============================
-       LIGHTBOX
+       LIGHTBOX + SWIPE + SCROLL LOCK
     =============================== */
     const media = Array.from(document.querySelectorAll(".gift-item img, .gift-item video"));
     const lightbox = document.getElementById("lightbox");
@@ -50,6 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.getElementById("next");
 
     let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function preventScroll(e) {
+        e.preventDefault();
+    }
+
+    function disableBackgroundScroll() {
+        document.body.classList.add("no-scroll");
+        document.addEventListener("touchmove", preventScroll, { passive: false });
+    }
+
+    function enableBackgroundScroll() {
+        document.body.classList.remove("no-scroll");
+        document.removeEventListener("touchmove", preventScroll);
+    }
 
     function stopAllVideos() {
         document.querySelectorAll("video").forEach(v => v.pause());
@@ -57,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openLightbox() {
         const item = media[currentIndex];
+
         lightboxImg.style.display = "none";
         lightboxVideo.style.display = "none";
         lightboxVideo.pause();
@@ -70,13 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         lightbox.style.display = "flex";
-        document.body.classList.add("no-scroll");
+        disableBackgroundScroll();
     }
 
     function closeLightbox() {
         stopAllVideos();
         lightbox.style.display = "none";
-        document.body.classList.remove("no-scroll");
+        enableBackgroundScroll();
     }
 
     media.forEach((item, i) => {
@@ -97,6 +114,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     closeBtn?.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    [lightboxImg, lightboxVideo].forEach(el => {
+        if (!el) return;
+
+        el.addEventListener("touchstart", e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        el.addEventListener("touchend", e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) < 50) return;
+
+            currentIndex = diff > 0
+                ? (currentIndex + 1) % media.length
+                : (currentIndex - 1 + media.length) % media.length;
+
+            openLightbox();
+        });
+    });
 
     /* ===============================
        SOCIAL MODAL
@@ -122,41 +163,4 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = select.value;
         });
     }
-
-});
-
-/* ===============================
-   SWIPE SUPPORT (MOBIEL)
-=============================== */
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleSwipe() {
-    const threshold = 50; // minimale swipe-afstand
-    const diff = touchStartX - touchEndX;
-
-    if (Math.abs(diff) < threshold) return;
-
-    if (diff > 0) {
-        // swipe naar links → volgende
-        currentIndex = (currentIndex + 1) % media.length;
-    } else {
-        // swipe naar rechts → vorige
-        currentIndex = (currentIndex - 1 + media.length) % media.length;
-    }
-    openLightbox();
-}
-
-["lightboxImg", "lightboxVideo"].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    el.addEventListener("touchstart", e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    el.addEventListener("touchend", e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
 });
