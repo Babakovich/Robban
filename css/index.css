@@ -535,12 +535,19 @@ body.no-scroll {
 /* ❌ LIGHTBOX CONTROLS VERBERGEN OP MOBIEL */
 @media (max-width: 700px) {
 
-    .lightbox .nav,
-    .lightbox-close {
+    .lightbox .nav {
         display: none !important;
     }
 
+    .lightbox-close {
+        display: block !important;
+        top: 16px;
+        right: 18px;
+        font-size: 34px;
+        z-index: 5000;
+    }
 }
+
 
 @media (max-width: 700px) {
     .header {

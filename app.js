@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===============================
-       HOVER IMAGE ROTATION
+       HOVER IMAGE ROTATION (DESKTOP)
     =============================== */
     document.querySelectorAll(".gift-item").forEach(item => {
         const images = item.querySelectorAll("img");
@@ -76,13 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lightboxImg.style.display = "none";
         lightboxVideo.style.display = "none";
-        lightboxVideo.pause();
+
+        stopAllVideos();
 
         if (item.tagName === "IMG") {
             lightboxImg.src = item.src;
             lightboxImg.style.display = "block";
         } else {
             lightboxVideo.src = item.querySelector("source")?.src || item.src;
+            lightboxVideo.poster = "Afbeeldingen/Afbeelding-video.png";
             lightboxVideo.style.display = "block";
         }
 
@@ -92,6 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeLightbox() {
         stopAllVideos();
+
+        // video volledig resetten (belangrijk op mobiel)
+        lightboxVideo.removeAttribute("src");
+        lightboxVideo.load();
+
         lightbox.style.display = "none";
         enableBackgroundScroll();
     }
@@ -115,20 +122,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeBtn?.addEventListener("click", closeLightbox);
 
+    // klik buiten afbeelding/video = sluiten
     lightbox.addEventListener("click", e => {
         if (e.target === lightbox) closeLightbox();
     });
 
-    [lightboxImg, lightboxVideo].forEach(el => {
-        if (!el) return;
-
-        el.addEventListener("touchstart", e => {
+    /* ===============================
+       SWIPE (ALLEEN AFBEELDINGEN)
+    =============================== */
+    if (lightboxImg) {
+        lightboxImg.addEventListener("touchstart", e => {
             touchStartX = e.changedTouches[0].screenX;
         });
 
-        el.addEventListener("touchend", e => {
+        lightboxImg.addEventListener("touchend", e => {
             touchEndX = e.changedTouches[0].screenX;
             const diff = touchStartX - touchEndX;
+
             if (Math.abs(diff) < 50) return;
 
             currentIndex = diff > 0
@@ -137,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             openLightbox();
         });
-    });
+    }
 
     /* ===============================
        SOCIAL MODAL
