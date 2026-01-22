@@ -124,3 +124,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* ===============================
+   SWIPE SUPPORT (MOBIEL)
+=============================== */
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleSwipe() {
+    const threshold = 50; // minimale swipe-afstand
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) < threshold) return;
+
+    if (diff > 0) {
+        // swipe naar links → volgende
+        currentIndex = (currentIndex + 1) % media.length;
+    } else {
+        // swipe naar rechts → vorige
+        currentIndex = (currentIndex - 1 + media.length) % media.length;
+    }
+    openLightbox();
+}
+
+["lightboxImg", "lightboxVideo"].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.addEventListener("touchstart", e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    el.addEventListener("touchend", e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+});
