@@ -14,34 +14,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===============================
-       HOVER IMAGE ROTATION (ALLEEN DESKTOP)
+       IMAGE ROTATION
+       DESKTOP (HOVER) + MOBILE (TOUCH)
     =============================== */
-    const canHover = window.matchMedia("(hover: hover)").matches;
 
-    if (canHover) {
-        document.querySelectorAll(".gift-item").forEach(item => {
-            const images = item.querySelectorAll("img");
-            if (images.length <= 1) return;
+    document.querySelectorAll(".gift-item").forEach(item => {
+        const images = item.querySelectorAll("img");
+        if (images.length <= 1) return;
 
-            let index = 0;
-            let timer = null;
+        let index = 0;
+        let timer = null;
 
-            item.addEventListener("mouseenter", () => {
-                timer = setInterval(() => {
-                    images[index].style.opacity = 0;
-                    index = (index + 1) % images.length;
-                    images[index].style.opacity = 1;
-                }, 1000);
-            });
+        function startRotation() {
+            if (timer) return;
+            timer = setInterval(() => {
+                images[index].style.opacity = 0;
+                index = (index + 1) % images.length;
+                images[index].style.opacity = 1;
+            }, 1000);
+        }
 
-            item.addEventListener("mouseleave", () => {
-                clearInterval(timer);
-                timer = null;
-                images.forEach((img, i) => img.style.opacity = i === 0 ? 1 : 0);
-                index = 0;
-            });
-        });
-    }
+        function stopRotation() {
+            clearInterval(timer);
+            timer = null;
+            images.forEach((img, i) => img.style.opacity = i === 0 ? 1 : 0);
+            index = 0;
+        }
+
+        /* 🖥️ DESKTOP */
+        item.addEventListener("mouseenter", startRotation);
+        item.addEventListener("mouseleave", stopRotation);
+
+        /* 📱 MOBIEL */
+        item.addEventListener("touchstart", startRotation, { passive: true });
+        item.addEventListener("touchend", stopRotation);
+        item.addEventListener("touchcancel", stopRotation);
+    });
+
 
     /* ===============================
        LIGHTBOX + SWIPE + SCROLL LOCK
