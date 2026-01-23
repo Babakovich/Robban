@@ -71,7 +71,7 @@ body {
 /* ===== CATALOG GRID ===== */
 .catalog-left {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 60px 80px;
     margin: 60px 0;
 }

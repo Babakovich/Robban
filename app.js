@@ -132,9 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeBtn?.addEventListener("click", closeLightbox);
 
-    lightbox.addEventListener("click", e => {
-        if (e.target === lightbox) closeLightbox();
-    });
+    if (lightbox) {
+        lightbox.addEventListener("click", e => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
 
     /* ===============================
        SWIPE (AFBEELDINGEN)
