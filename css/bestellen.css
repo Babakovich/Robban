@@ -256,39 +256,46 @@ a.mail-link:focus {
 
     .site-header {
         height: auto;
-        padding-top: 20px;
-        /* ✅ kleiner */
-        padding-bottom: 6px;
-        /* ✅ compacter */
+        /* ✅ BELANGRIJK */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+        padding-top: 15px;
     }
 
+
     .logo-link {
-        padding-top: 5px;
-        /* ✅ minder ruimte */
+        padding-top: 8px;
     }
 
     .logo {
-        max-width: 140px;
-        /* ✅ kleiner logo */
+        max-width: 180px;
         height: auto;
+        margin: 0;
     }
 
-}
+    /* Mobiel dropdown zichtbaar */
+    .mobile-dropdown {
+        display: block;
+        width: 95%;
+        margin: 14px auto 20px;
+    }
 
+    .mobile-dropdown select {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        background: #f2f2f2;
+        text-align: center;
+        text-align-last: center;
+    }
 
-.mobile-dropdown select {
-    width: 100%;
-    padding: 14px;
-    font-size: 16px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    background: #f2f2f2;
-    text-align: center;
-    text-align-last: center;
-}
-
-.main-menu {
-    display: none;
+    .main-menu {
+        display: none;
+    }
 }
 
 
