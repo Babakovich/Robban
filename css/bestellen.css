@@ -244,6 +244,7 @@ a.mail-link:focus {
 
 /* ===== MOBIEL DROPDOWN ===== */
 
+/* Desktop standaard */
 .mobile-dropdown {
     display: none;
 }
@@ -258,28 +259,21 @@ a.mail-link:focus {
         padding-top: 50px;
     }
 
-    /* ✅ ALLEEN het logo lager zetten */
-    @media (max-width: 700px) {
-
-        .logo-link {
-            padding-top: 20px;
-        }
-
-        .logo {
-            width: 70vw;
-            max-width: 260px;
-            height: auto;
-            margin: 0;
-            pointer-events: none;
-        }
+    .logo-link {
+        padding-top: 20px;
     }
 
+    .logo {
+        max-width: 180px;
+        height: auto;
+        margin: 0;
+    }
+
+    /* Mobiel dropdown zichtbaar */
     .mobile-dropdown {
         display: block;
         width: 95%;
         margin: 14px auto 20px;
-        position: relative;
-        z-index: 10;
     }
 
     .mobile-dropdown select {
@@ -291,21 +285,17 @@ a.mail-link:focus {
         background: #f2f2f2;
         text-align: center;
         text-align-last: center;
-        /* iOS */
-    }
-
-    .mobile-dropdown option {
-        text-align: center;
     }
 
     .main-menu {
         display: none;
     }
+}
 
-    main.page {
-        margin-top: 24px;
-        padding-top: 12px;
-    }
+
+main.page {
+    margin-top: 24px;
+    padding-top: 12px;
 }
 
 @media (max-width: 700px) {

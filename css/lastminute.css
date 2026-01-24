@@ -14,7 +14,6 @@ body {
     background: #faf7fc;
 }
 
-
 /* ===== HEADER ===== */
 .site-header {
     height: 100px;
@@ -42,28 +41,23 @@ body {
 
 .logo {
     max-height: 110px;
-    /* was 200 */
     width: auto;
     display: block;
 }
 
-
+/* ===== PAGINA ===== */
 .page {
     flex: 1;
     display: flex;
     justify-content: center;
-    /* horizontaal */
     align-items: flex-start;
-    /* bovenaan */
     text-align: center;
-    /* tekst centreren */
 }
 
 .center-text {
     max-width: 900px;
     line-height: 1.6;
 }
-
 
 /* ===== MENU ===== */
 .main-menu {
@@ -85,7 +79,6 @@ body {
     text-decoration: underline;
 }
 
-/* actieve pagina in menu */
 .main-menu a.active {
     text-decoration: underline;
     text-underline-offset: 6px;
@@ -95,11 +88,10 @@ body {
 /* ===== FOOTER ===== */
 .site-footer {
     min-height: 100px;
-    /* ⬅ groter */
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    /* iconen iets lager */
+    padding-bottom: 50px;
 
     background:
         linear-gradient(to top,
@@ -111,19 +103,13 @@ body {
             #e8c8f2 50%,
             #d9c4fa 75%,
             #cdbbff 100%);
-
-    padding-bottom: 50px;
-    /* extra ademruimte */
 }
 
-/* 🔧 FIX: iconen exact centreren */
 .site-footer-inner {
     max-width: 900px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto;
-    /* ← AANGEPAST */
-    align-items: center;
     justify-items: center;
 }
 
@@ -159,69 +145,7 @@ body {
     z-index: 999;
 }
 
-/* ===== COOKIE BANNER ===== */
-.cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #000;
-    color: #fff;
-    padding: 14px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 3000;
-    font-size: 0.9rem;
-}
-
-.cookie-banner a {
-    color: #ff7ac8;
-    text-decoration: underline;
-}
-
-.cookie-buttons {
-    display: flex;
-    gap: 12px;
-    margin-right: 40px;
-}
-
-.cookie-buttons button {
-    padding: 8px 14px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-#acceptCookies {
-    background: #ff1bb3;
-    color: #fff;
-}
-
-#rejectCookies {
-    background: #444;
-    color: #fff;
-}
-
-/* ===== MOBIEL ===== */
-@media (max-width: 700px) {
-
-    .site-header {
-        height: 200px;
-    }
-
-    .logo {
-        max-height: 110px;
-    }
-
-    .main-menu {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-}
-
-/* CONSISTENTE ROZE LINKS */
+/* ===== LINKS ===== */
 .social-link,
 .mail-link {
     font-weight: 700;
@@ -230,22 +154,12 @@ body {
     text-decoration: none;
 }
 
-/* hover = zelfde gedrag */
 .social-link:hover,
 .mail-link:hover {
     opacity: 0.85;
-    text-decoration: none;
 }
 
-/* ICONS */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-bottom: 25px;
-}
-
-/* ===== SOCIAL MEDIA MODAL ===== */
+/* ===== SOCIAL MODAL ===== */
 .social-modal {
     position: fixed;
     inset: 0;
@@ -256,12 +170,10 @@ body {
     z-index: 3000;
 }
 
-/* ⭐ DIT WAS DE GROTE MISSENDE SCHAKEL */
 .social-modal.show {
     display: flex;
 }
 
-/* MODAL VENSTER */
 .social-box {
     background: #fff;
     padding: 30px 40px;
@@ -271,12 +183,6 @@ body {
     width: 90%;
 }
 
-/* TITEL */
-.social-box h3 {
-    margin-bottom: 20px;
-}
-
-/* ICONS */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -291,7 +197,6 @@ body {
     cursor: pointer;
 }
 
-/* SLUIT KNOP */
 #closeSocials {
     padding: 8px 18px;
     border: none;
@@ -301,41 +206,39 @@ body {
     cursor: pointer;
 }
 
-/* ===== MOBIEL DROPDOWN ===== */
-
+/* ===== MOBIEL DROPDOWN (DESKTOP UIT) ===== */
 .mobile-dropdown {
     display: none;
 }
 
+/* ===== MOBIEL (ALLES SAMEN) ===== */
 @media (max-width: 700px) {
 
     .site-header {
+        height: 200px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 10px;
         padding-top: 50px;
+        padding-bottom: 10px;
     }
 
-    /* ✅ ALLEEN het logo lager zetten */
     .logo-link {
         padding-top: 20px;
     }
 
+    /* ✅ Logo exact zoals wie.css */
     .logo {
-        width: 70vw;
-        max-width: 260px;
+        max-width: 180px;
         height: auto;
         margin: 0;
-        pointer-events: none;
     }
 
+    /* Dropdown zichtbaar */
     .mobile-dropdown {
         display: block;
         width: 95%;
         margin: 14px auto 20px;
-        position: relative;
-        z-index: 10;
     }
 
     .mobile-dropdown select {
@@ -353,6 +256,7 @@ body {
         text-align: center;
     }
 
+    /* Menu weg op mobiel */
     .main-menu {
         display: none;
     }
