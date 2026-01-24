@@ -259,8 +259,8 @@ a.mail-link:focus {
     }
 
     /* ✅ ALLEEN het logo lager zetten */
-
     @media (max-width: 700px) {
+
         .logo-link {
             padding-top: 20px;
         }
