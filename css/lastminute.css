@@ -254,3 +254,12 @@ body {
         display: none;
     }
 }
+
+@media (max-width: 700px) {
+
+    .page {
+        padding-top: 30px;
+        /* ✅ ruimte tussen header en tekst */
+    }
+
+}
