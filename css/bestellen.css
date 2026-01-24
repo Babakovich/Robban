@@ -267,6 +267,7 @@ a.mail-link:focus {
 
     .logo-link {
         padding-top: 8px;
+        height: auto;
     }
 
     .logo {
