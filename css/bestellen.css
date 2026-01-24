@@ -150,7 +150,10 @@ a.mail-link:focus {
     max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    /* ✅ zelfde als lastminute */
+    justify-items: center;
+    /* ✅ perfect centreren */
     align-items: center;
 }
 
@@ -293,10 +296,13 @@ a.mail-link:focus {
 }
 
 
-main.page {
-    margin-top: 24px;
-    padding-top: 12px;
+@media (max-width: 700px) {
+    main.page {
+        margin-top: 24px;
+        padding-top: 12px;
+    }
 }
+
 
 @media (max-width: 700px) {
     .voorwaarden-title {
